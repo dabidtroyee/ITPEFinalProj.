@@ -75,7 +75,7 @@
     </section>
 
     <script>
-        // Load user data from localStorage if available
+        
         function loadUserData() {
             const userData = JSON.parse(localStorage.getItem('userData'));
 
@@ -91,11 +91,11 @@
             }
         }
 
-        // Edit profile functionality
+        
         function editProfile() {
             const userData = JSON.parse(localStorage.getItem('userData'));
 
-            // Pre-fill the form with current user data
+            
             if (userData) {
                 document.getElementById('editName').value = userData.name || '';
                 document.getElementById('editEmail').value = userData.email || '';
@@ -118,18 +118,18 @@
                 const reader = new FileReader();
                 reader.onload = function (e) {
                     userData.profilePic = e.target.result;
-                    // Save updated data to localStorage
+                    
                     localStorage.setItem('userData', JSON.stringify(userData));
-                    // Update profile image
+                    
                     document.getElementById('profileImg').src = userData.profilePic;
                 }
                 reader.readAsDataURL(profilePic);
             } else {
-                // Save updated data without changing profile picture
+                
                 localStorage.setItem('userData', JSON.stringify(userData));
             }
 
-            // Update profile info displayed on page
+            
             document.getElementById('userName').innerText = `Welcome, ${userData.name}`;
             document.getElementById('userEmail').innerText = `Email: ${userData.email}`;
 
@@ -141,13 +141,13 @@
             document.getElementById('profileInfo').style.display = 'block';
         }
 
-        // Logout functionality
+        
         function logout() {
             localStorage.removeItem('userData');
             window.location.href = 'index.html'; // Redirect to login after logout
         }
 
-        // Load user data when page is loaded
+        
         window.onload = loadUserData;
     </script>
 
